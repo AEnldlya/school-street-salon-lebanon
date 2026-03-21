@@ -1,0 +1,313 @@
+@import "tailwindcss";
+
+/* 
+  FONTS - Wellness/Hospitality Category
+  Syne: Modern geometric serif for display - feminine, elegant
+  Chillax: Rounded sans-serif for body - friendly, approachable
+*/
+@import url('https://api.fontshare.com/v2/css?f[]=syne@400,500,600,700&f[]=chillax@400,500,600&display=swap');
+
+:root {
+  /* Wellness Color Palette - Soft, natural, calming */
+  --sage: #8FA68E;
+  --sage-light: #A8C4A7;
+  --sage-dark: #6B826A;
+  --sage-muted: #E8F0E8;
+  --cream: #F7F5F0;
+  --warm-white: #FDFCFA;
+  --blush: #E8DCD4;
+  --charcoal: #2C2C2C;
+  --charcoal-light: #4A4A4A;
+  --charcoal-muted: #6B6B6B;
+  
+  /* Luxury Animation Timing - 0.8-1.6s range */
+  --duration-micro: 0.2s;
+  --duration-short: 0.5s;
+  --duration-medium: 0.8s;
+  --duration-long: 1.2s;
+  --duration-xl: 1.6s;
+  
+  /* Luxury Easing */
+  --ease-luxury: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-smooth: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-expo: cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Chillax', system-ui, sans-serif;
+  color: var(--charcoal);
+  background: var(--warm-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Display Font - Syne */
+.font-display {
+  font-family: 'Syne', Georgia, serif;
+}
+
+/* Body Font - Chillax */
+.font-body {
+  font-family: 'Chillax', system-ui, sans-serif;
+}
+
+/* Selection */
+::selection {
+  background: var(--sage);
+  color: var(--warm-white);
+}
+
+/* Luxury Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--cream);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--sage);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--sage-dark);
+}
+
+/* LUXURY BUTTON - 21st.dev style with fill sweep */
+.btn-luxury {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1.125rem 2.5rem;
+  color: white;
+  font-family: 'Chillax', system-ui, sans-serif;
+  font-weight: 500;
+  font-size: 0.9375rem;
+  letter-spacing: 0.02em;
+  background: var(--sage);
+  border-radius: 100px;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all var(--duration-medium) var(--ease-luxury);
+  box-shadow: 0 4px 16px rgba(143, 166, 142, 0.3);
+}
+
+.btn-luxury::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.6s ease;
+}
+
+.btn-luxury:hover {
+  background: var(--sage-dark);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(143, 166, 142, 0.4);
+}
+
+.btn-luxury:hover::before {
+  left: 100%;
+}
+
+.btn-luxury:active {
+  transform: translateY(-1px);
+}
+
+/* OUTLINE BUTTON - with fill sweep */
+.btn-outline-luxury {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1.125rem 2.5rem;
+  font-family: 'Chillax', system-ui, sans-serif;
+  font-weight: 500;
+  font-size: 0.9375rem;
+  letter-spacing: 0.02em;
+  color: var(--sage);
+  background: transparent;
+  border: 2px solid var(--sage);
+  border-radius: 100px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all var(--duration-medium) var(--ease-luxury);
+}
+
+.btn-outline-luxury::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--sage);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform var(--duration-medium) var(--ease-luxury);
+  z-index: -1;
+}
+
+.btn-outline-luxury:hover {
+  color: white;
+  transform: translateY(-3px);
+  border-color: var(--sage);
+}
+
+.btn-outline-luxury:hover::before {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* $50K TIER HEADING SIZES */
+.hero-title {
+  font-family: 'Syne', Georgia, serif;
+  font-size: clamp(3.5rem, 10vw, 10rem); /* 56px to 160px */
+  font-weight: 600;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+}
+
+.section-title {
+  font-family: 'Syne', Georgia, serif;
+  font-size: clamp(2.5rem, 5vw, 5rem); /* 40px to 80px */
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+.subsection-title {
+  font-family: 'Syne', Georgia, serif;
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+/* Card hover - 21st.dev style lift */
+.card-luxury {
+  transition: transform var(--duration-medium) var(--ease-luxury),
+              box-shadow var(--duration-medium) var(--ease-luxury);
+}
+
+.card-luxury:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 24px 48px rgba(143, 166, 142, 0.15);
+}
+
+/* Image reveal animation */
+.img-reveal {
+  clip-path: inset(0 100% 0 0);
+  animation: imgReveal 1.2s var(--ease-luxury) forwards;
+}
+
+@keyframes imgReveal {
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+/* Text scramble placeholder */
+.scramble-text {
+  display: inline-block;
+}
+
+/* Magnetic button effect base */
+.magnetic {
+  transition: transform 0.3s var(--ease-spring);
+}
+
+/* Parallax container */
+.parallax-container {
+  overflow: hidden;
+  position: relative;
+}
+
+/* Smooth image loading */
+.img-loading {
+  filter: blur(20px);
+  opacity: 0;
+  transition: filter 0.8s ease, opacity 0.8s ease;
+}
+
+.img-loaded {
+  filter: blur(0);
+  opacity: 1;
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, var(--sage) 0%, var(--sage-dark) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glass morphism card */
+.glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(143, 166, 142, 0.1);
+}
+
+/* Underline animation */
+.underline-animate {
+  position: relative;
+}
+
+.underline-animate::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--sage);
+  transition: width 0.5s var(--ease-luxury);
+}
+
+.underline-animate:hover::after {
+  width: 100%;
+}
+
+/* Stagger animation helper classes */
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }
+.stagger-5 { animation-delay: 0.5s; }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
