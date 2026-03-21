@@ -1,11 +1,11 @@
-@import "tailwindcss";
-
-/* 
+/*
   FONTS - Wellness/Hospitality Category
   Syne: Modern geometric serif for display - feminine, elegant
   Chillax: Rounded sans-serif for body - friendly, approachable
 */
 @import url('https://api.fontshare.com/v2/css?f[]=syne@400,500,600,700&f[]=chillax@400,500,600&display=swap');
+
+@import "tailwindcss";
 
 :root {
   /* Wellness Color Palette - Soft, natural, calming */

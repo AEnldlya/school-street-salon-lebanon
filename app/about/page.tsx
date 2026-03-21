@@ -14,7 +14,8 @@ export default function AboutPage() {
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.utils.toArray<HTMLElement>('.about-reveal').forEach((el) => {
-        gsap.fromTo(el,
+        gsap.fromTo(
+          el,
           { opacity: 0, y: 50 },
           {
             opacity: 1,
@@ -24,8 +25,8 @@ export default function AboutPage() {
             scrollTrigger: {
               trigger: el,
               start: 'top 85%',
-              toggleActions: 'play reverse play reverse'
-            }
+              toggleActions: 'play reverse play reverse',
+            },
           }
         );
       });
@@ -37,7 +38,10 @@ export default function AboutPage() {
   return (
     <main className="min-h-screen bg-[#FDFCFA] pt-32 pb-20">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <Link href="/" className="inline-flex items-center gap-2 text-[#8FA68E] hover:text-[#6B826A] transition-colors mb-8 font-body">
+        <Link
+          href="/"
+          className="inline-flex items-center gap-2 text-[#8FA68E] hover:text-[#6B826A] transition-colors mb-8 font-body"
+        >
           <ArrowRight size={16} className="rotate-180" />
           Back to Home
         </Link>
@@ -64,20 +68,23 @@ export default function AboutPage() {
           </div>
           <div className="about-reveal">
             <h2 className="font-display text-3xl md:text-4xl text-[#2C2C2C] mb-6">
-              A Salon Built on Listening
+              We Listen First
             </h2>
             <div className="space-y-6 font-body text-lg text-[#4A4A4A] leading-relaxed">
               <p>
-                School Street Salon opened with a simple mission: create a space where 
-                everyone feels welcome, listened to, and leaves looking their best.
+                School Street Salon is a small, women-owned salon in the heart
+                of Lebanon, New Hampshire. We are located in The Village House
+                at 1 School Street.
               </p>
               <p>
-                Located in The Village House at 1 School Street in Lebanon, New Hampshire, 
-                we are a small, women-owned business serving the Upper Valley community.
+                We opened with a simple idea: take the time to listen. Before
+                we pick up the scissors, we want to understand what you are
+                looking for and what works for your life.
               </p>
               <p>
-                We believe good hair starts with a good conversation. Our stylists take 
-                the time to understand what you want and what works for your lifestyle.
+                This is not a rushed, in-and-out kind of place. We care about
+                getting it right, and we want you to leave feeling good about
+                your hair.
               </p>
             </div>
           </div>
@@ -86,12 +93,24 @@ export default function AboutPage() {
         {/* Values */}
         <div className="grid md:grid-cols-3 gap-8 mb-24">
           {[
-            { icon: Heart, title: "Personal Touch", desc: "We remember your name, your preferences, and what makes you feel confident." },
-            { icon: Award, title: "Quality Work", desc: "Professional products and proven techniques for results that last." },
-            { icon: Users, title: "Community First", desc: "Proud to be part of Lebanon and the Upper Valley community." },
+            {
+              icon: Heart,
+              title: 'We Take Our Time',
+              desc: 'No rushing. We listen to what you want and make sure we understand before we start.',
+            },
+            {
+              icon: Award,
+              title: 'Honest Work',
+              desc: 'We use products we trust and give you our honest opinion about what will work for your hair.',
+            },
+            {
+              icon: Users,
+              title: 'Part of the Community',
+              desc: 'We are proud to be in Lebanon and to serve the Upper Valley. Many of our clients are regulars.',
+            },
           ].map((value, idx) => (
-            <motion.div 
-              key={idx} 
+            <motion.div
+              key={idx}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -101,7 +120,9 @@ export default function AboutPage() {
               <div className="w-16 h-16 rounded-full bg-[#8FA68E]/10 flex items-center justify-center mx-auto mb-6">
                 <value.icon className="w-8 h-8 text-[#8FA68E]" />
               </div>
-              <h3 className="font-display text-2xl text-[#2C2C2C] mb-3">{value.title}</h3>
+              <h3 className="font-display text-2xl text-[#2C2C2C] mb-3">
+                {value.title}
+              </h3>
               <p className="font-body text-[#4A4A4A]">{value.desc}</p>
             </motion.div>
           ))}
@@ -111,44 +132,61 @@ export default function AboutPage() {
         <div className="about-reveal bg-[#8FA68E] rounded-3xl p-10 md:p-16 text-center mb-24">
           <Heart className="w-12 h-12 text-white mx-auto mb-6" />
           <h2 className="font-display text-3xl md:text-4xl text-white mb-4">
-            Women-Owned Business
+            Women-Owned
           </h2>
           <p className="font-body text-lg text-white/90 max-w-2xl mx-auto">
-            School Street Salon is proudly women-owned and operated. We believe in 
-            supporting local businesses and creating opportunities for women in our community.
+            School Street Salon is proudly women-owned and operated. We
+            believe in doing good work for good people.
           </p>
         </div>
 
         {/* Location */}
         <div className="about-reveal text-center">
-          <h2 className="font-display text-3xl md:text-4xl text-[#2C2C2C] mb-8">Visit Us</h2>
+          <h2 className="font-display text-3xl md:text-4xl text-[#2C2C2C] mb-8">
+            Come See Us
+          </h2>
           <div className="grid md:grid-cols-3 gap-8 max-w-3xl mx-auto mb-12">
             <div className="flex flex-col items-center">
               <MapPin className="w-8 h-8 text-[#8FA68E] mb-3" />
-              <h3 className="font-body font-medium text-[#2C2C2C] mb-1">Address</h3>
+              <h3 className="font-body font-medium text-[#2C2C2C] mb-1">
+                Address
+              </h3>
               <p className="font-body text-[#4A4A4A] text-center">
-                1 School Street<br />
-                Lebanon, NH 03766<br />
+                1 School Street
+                <br />
+                Lebanon, NH 03766
+                <br />
                 In The Village House
               </p>
             </div>
             <div className="flex flex-col items-center">
               <Phone className="w-8 h-8 text-[#8FA68E] mb-3" />
-              <h3 className="font-body font-medium text-[#2C2C2C] mb-1">Phone</h3>
-              <a href="tel:6037279377" className="font-body text-[#8FA68E] hover:underline">
+              <h3 className="font-body font-medium text-[#2C2C2C] mb-1">
+                Phone
+              </h3>
+              <a
+                href="tel:6037279377"
+                className="font-body text-[#8FA68E] hover:underline"
+              >
                 (603) 727-9377
               </a>
             </div>
             <div className="flex flex-col items-center">
               <Clock className="w-8 h-8 text-[#8FA68E] mb-3" />
-              <h3 className="font-body font-medium text-[#2C2C2C] mb-1">Hours</h3>
+              <h3 className="font-body font-medium text-[#2C2C2C] mb-1">
+                Hours
+              </h3>
               <p className="font-body text-[#4A4A4A] text-center">
-                By Appointment<br />
+                By Appointment
+                <br />
                 Call to Schedule
               </p>
             </div>
           </div>
-          <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
+          <motion.div
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
+          >
             <Link href="/contact" className="btn-luxury">
               Get Directions
               <ArrowRight size={18} />
@@ -156,18 +194,6 @@ export default function AboutPage() {
           </motion.div>
         </div>
       </div>
-
-      {/* Footer */}
-      <footer className="bg-[#2C2C2C] text-white py-16 mt-24">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center">
-          <div className="font-display text-2xl mb-4">
-            School Street <span className="text-[#8FA68E]">Salon</span>
-          </div>
-          <p className="font-body text-white/60">
-            1 School St, Lebanon, NH | (603) 727-9377
-          </p>
-        </div>
-      </footer>
     </main>
   );
 }

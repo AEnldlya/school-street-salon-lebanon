@@ -1,7 +1,6 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
 import { useEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -12,49 +11,130 @@ gsap.registerPlugin(ScrollTrigger);
 
 const services = [
   {
-    category: "Cuts",
+    category: 'Cuts',
     icon: Scissors,
-    image: "/images/salon-real/salon-interior-1.jpg",
+    gradient: 'from-[#8FA68E] to-[#A8C4A7]',
     items: [
-      { name: "Women's Cut & Style", price: "$45-65", time: "60 min", desc: "Precision cut tailored to your face shape and lifestyle" },
-      { name: "Men's Cut", price: "$30-40", time: "30 min", desc: "Clean, modern cuts for every style" },
-      { name: "Kid's Cut (12 & under)", price: "$25-35", time: "30 min", desc: "Gentle care for your little ones" },
-      { name: "Bang Trim", price: "$15", time: "15 min", desc: "Quick trim to keep your look fresh" },
-      { name: "Beard Trim", price: "$15-20", time: "15 min", desc: "Shape and style your beard" },
-    ]
+      {
+        name: "Women's Cut & Style",
+        price: '$45-65',
+        time: '60 min',
+        desc: 'A cut that works for your hair type and your daily routine',
+      },
+      {
+        name: "Men's Cut",
+        price: '$30-40',
+        time: '30 min',
+        desc: 'Clean, sharp, easy to maintain',
+      },
+      {
+        name: "Kid's Cut (12 & under)",
+        price: '$25-35',
+        time: '30 min',
+        desc: 'We are patient with the little ones',
+      },
+      {
+        name: 'Bang Trim',
+        price: '$15',
+        time: '15 min',
+        desc: 'Quick cleanup between full cuts',
+      },
+      {
+        name: 'Beard Trim',
+        price: '$15-20',
+        time: '15 min',
+        desc: 'Neat, shaped, looking sharp',
+      },
+    ],
   },
   {
-    category: "Color",
+    category: 'Color',
     icon: Sparkles,
-    image: "/images/salon-real/salon-interior-1.jpg",
+    gradient: 'from-[#A8C4A7] to-[#6B826A]',
     items: [
-      { name: "Full Color", price: "$75-95", time: "90 min", desc: "All-over color with premium products" },
-      { name: "Root Touch-up", price: "$65-85", time: "75 min", desc: "Refresh your roots for seamless color" },
-      { name: "Partial Highlights", price: "$85-115", time: "90 min", desc: "Strategic highlights for dimension" },
-      { name: "Full Highlights", price: "$120-160", time: "2 hrs", desc: "Complete highlight transformation" },
-      { name: "Balayage", price: "$150-200", time: "2.5 hrs", desc: "Hand-painted color for natural dimension" },
-      { name: "Color Correction", price: "Consultation", time: "Varies", desc: "Fix color mishaps and achieve your goal" },
-    ]
+      {
+        name: 'Full Color',
+        price: '$75-95',
+        time: '90 min',
+        desc: 'All-over color with products we trust',
+      },
+      {
+        name: 'Root Touch-up',
+        price: '$65-85',
+        time: '75 min',
+        desc: 'Keep your color fresh without doing everything over',
+      },
+      {
+        name: 'Partial Highlights',
+        price: '$85-115',
+        time: '90 min',
+        desc: 'A few highlights to add some dimension',
+      },
+      {
+        name: 'Full Highlights',
+        price: '$120-160',
+        time: '2 hrs',
+        desc: 'Full head of highlights for a bigger change',
+      },
+      {
+        name: 'Balayage',
+        price: '$150-200',
+        time: '2.5 hrs',
+        desc: 'Hand-painted color that looks natural as it grows out',
+      },
+      {
+        name: 'Color Correction',
+        price: 'Consultation',
+        time: 'Varies',
+        desc: 'If something went wrong, we can fix it. Call us first.',
+      },
+    ],
   },
   {
-    category: "Styling & Treatments",
+    category: 'Styling & Treatments',
     icon: Heart,
-    image: "/images/salon-real/salon-interior-1.jpg",
+    gradient: 'from-[#6B826A] to-[#8FA68E]',
     items: [
-      { name: "Blowout", price: "$35-50", time: "45 min", desc: "Silky, voluminous blowout that lasts" },
-      { name: "Special Occasion Styling", price: "$65-85", time: "60 min", desc: "Updos and formal styles for your big day" },
-      { name: "Deep Conditioning Treatment", price: "$25-35", time: "30 min", desc: "Restore moisture and shine" },
-      { name: "Keratin Treatment", price: "$200-300", time: "3 hrs", desc: "Smooth, frizz-free hair for months" },
-      { name: "Scalp Treatment", price: "$35", time: "30 min", desc: "Revitalize your scalp for healthy hair" },
-    ]
-  }
+      {
+        name: 'Blowout',
+        price: '$35-50',
+        time: '45 min',
+        desc: 'Smooth, bouncy, ready to go',
+      },
+      {
+        name: 'Special Occasion Styling',
+        price: '$65-85',
+        time: '60 min',
+        desc: 'Weddings, proms, big nights out',
+      },
+      {
+        name: 'Deep Conditioning Treatment',
+        price: '$25-35',
+        time: '30 min',
+        desc: 'Bring dry, damaged hair back to life',
+      },
+      {
+        name: 'Keratin Treatment',
+        price: '$200-300',
+        time: '3 hrs',
+        desc: 'Smooth, frizz-free hair that lasts for months',
+      },
+      {
+        name: 'Scalp Treatment',
+        price: '$35',
+        time: '30 min',
+        desc: 'Healthy hair starts at the roots',
+      },
+    ],
+  },
 ];
 
 export default function ServicesPage() {
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.utils.toArray<HTMLElement>('.service-reveal').forEach((el) => {
-        gsap.fromTo(el,
+        gsap.fromTo(
+          el,
           { opacity: 0, y: 50 },
           {
             opacity: 1,
@@ -64,8 +144,8 @@ export default function ServicesPage() {
             scrollTrigger: {
               trigger: el,
               start: 'top 85%',
-              toggleActions: 'play reverse play reverse'
-            }
+              toggleActions: 'play reverse play reverse',
+            },
           }
         );
       });
@@ -78,7 +158,10 @@ export default function ServicesPage() {
     <main className="min-h-screen bg-[#FDFCFA] pt-32 pb-20">
       {/* Header */}
       <div className="max-w-7xl mx-auto px-6 lg:px-8 mb-16">
-        <Link href="/" className="inline-flex items-center gap-2 text-[#8FA68E] hover:text-[#6B826A] transition-colors mb-8 font-body">
+        <Link
+          href="/"
+          className="inline-flex items-center gap-2 text-[#8FA68E] hover:text-[#6B826A] transition-colors mb-8 font-body"
+        >
           <ArrowRight size={16} className="rotate-180" />
           Back to Home
         </Link>
@@ -86,11 +169,11 @@ export default function ServicesPage() {
           What We Offer
         </span>
         <h1 className="font-display text-5xl md:text-6xl lg:text-7xl text-[#2C2C2C] mb-6">
-          Services & Pricing
+          Services &amp; Pricing
         </h1>
         <p className="font-body text-xl text-[#4A4A4A] max-w-2xl">
-          Professional hair services tailored to your needs. Prices may vary based on hair length and complexity.
-          Call for exact quotes.
+          Prices may vary depending on hair length and what is involved. Call us
+          for a quote if you are not sure.
         </p>
       </div>
 
@@ -99,24 +182,25 @@ export default function ServicesPage() {
         {services.map((service, idx) => (
           <section key={idx} className="service-reveal">
             <div className="grid lg:grid-cols-2 gap-12 items-center mb-12">
-              <div className="relative h-[400px] rounded-3xl overflow-hidden">
-                <Image
-                  src={service.image}
-                  alt={service.category}
-                  fill
-                  className="object-cover"
-                />
+              <div
+                className={`relative h-[400px] rounded-3xl overflow-hidden bg-gradient-to-br ${service.gradient}`}
+              >
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <service.icon className="w-32 h-32 text-white/20" />
+                </div>
               </div>
               <div>
                 <div className="flex items-center gap-4 mb-6">
                   <div className="w-14 h-14 rounded-full bg-[#8FA68E]/10 flex items-center justify-center">
                     <service.icon className="w-7 h-7 text-[#8FA68E]" />
                   </div>
-                  <h2 className="font-display text-4xl text-[#2C2C2C]">{service.category}</h2>
+                  <h2 className="font-display text-4xl text-[#2C2C2C]">
+                    {service.category}
+                  </h2>
                 </div>
                 <p className="font-body text-lg text-[#4A4A4A]">
-                  Our {service.category.toLowerCase()} services are designed to bring out your best look 
-                  with precision and care.
+                  Take a look at what we offer. If you do not see what you need,
+                  just call and ask.
                 </p>
               </div>
             </div>
@@ -124,20 +208,24 @@ export default function ServicesPage() {
             <div className="bg-[#F7F5F0] rounded-3xl p-8 md:p-12">
               <div className="space-y-0">
                 {service.items.map((item, itemIdx) => (
-                  <div 
+                  <div
                     key={itemIdx}
                     className="py-6 border-b border-[#8FA68E]/10 last:border-0"
                   >
                     <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
                       <div className="flex-1">
                         <div className="flex items-center gap-3 mb-2">
-                          <h3 className="font-body text-xl font-medium text-[#2C2C2C]">{item.name}</h3>
+                          <h3 className="font-body text-xl font-medium text-[#2C2C2C]">
+                            {item.name}
+                          </h3>
                           <span className="flex items-center gap-1 text-sm text-[#4A4A4A]/60 font-body">
                             <Clock size={14} />
                             {item.time}
                           </span>
                         </div>
-                        <p className="font-body text-[#4A4A4A]/70">{item.desc}</p>
+                        <p className="font-body text-[#4A4A4A]/70">
+                          {item.desc}
+                        </p>
                       </div>
                       <span className="font-display text-2xl text-[#8FA68E] lg:text-right">
                         {item.price}
@@ -158,9 +246,9 @@ export default function ServicesPage() {
             Ready to book?
           </h2>
           <p className="font-body text-lg text-white/80 mb-8">
-            Call us to schedule your appointment or ask about our services.
+            Give us a call and we will get you on the schedule.
           </p>
-          <motion.a 
+          <motion.a
             href="tel:6037279377"
             className="inline-flex items-center gap-3 px-10 py-5 bg-white text-[#8FA68E] font-body font-medium text-lg rounded-full hover:bg-[#2C2C2C] hover:text-white transition-all duration-500"
             whileHover={{ scale: 1.03 }}
@@ -171,18 +259,6 @@ export default function ServicesPage() {
           </motion.a>
         </div>
       </div>
-
-      {/* Footer */}
-      <footer className="bg-[#2C2C2C] text-white py-16 mt-24">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center">
-          <div className="font-display text-2xl mb-4">
-            School Street <span className="text-[#8FA68E]">Salon</span>
-          </div>
-          <p className="font-body text-white/60">
-            1 School St, Lebanon, NH | (603) 727-9377
-          </p>
-        </div>
-      </footer>
     </main>
   );
 }
