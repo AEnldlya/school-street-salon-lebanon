@@ -7,19 +7,11 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Star, Phone, MapPin, Scissors, Heart, Sparkles, ArrowRight } from 'lucide-react';
+import HeroAceternity from './components/HeroAceternity';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
-  const heroRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ['start start', 'end start'],
-  });
-
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-  const heroScale = useTransform(scrollYProgress, [0, 0.5], [1, 0.9]);
-
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.utils.toArray<HTMLElement>('.parallax-img').forEach((img) => {
@@ -59,112 +51,8 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-[#FDFCFA] overflow-x-hidden">
-      {/* Hero Section */}
-      <section
-        ref={heroRef}
-        className="relative min-h-screen flex items-center justify-center overflow-hidden"
-      >
-        <motion.div
-          className="absolute inset-0 z-0"
-          style={{ opacity: heroOpacity, scale: heroScale }}
-        >
-          <Image
-            src="/images/salon-real/salon-interior-1.jpg"
-            alt="School Street Salon Interior"
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#FDFCFA]/95 via-[#FDFCFA]/80 to-[#FDFCFA]" />
-        </motion.div>
-
-        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-32 text-center">
-          <div className="max-w-4xl mx-auto">
-            <motion.span
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.3 }}
-              className="inline-block font-body text-sm text-[#8FA68E] tracking-[0.3em] uppercase mb-8"
-            >
-              Lebanon, New Hampshire
-            </motion.span>
-
-            <motion.h1
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.5 }}
-              className="hero-title text-[#2C2C2C] mb-8"
-            >
-              Your Neighborhood
-              <span className="block text-[#8FA68E]">Salon</span>
-            </motion.h1>
-
-            <motion.p
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.7 }}
-              className="font-body text-xl md:text-2xl text-[#4A4A4A] mb-12 max-w-2xl mx-auto leading-relaxed"
-            >
-              A women-owned salon where we take the time to listen and get it
-              right. Walk in feeling ready for a change, walk out feeling like
-              yourself.
-            </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.9 }}
-              className="flex flex-wrap justify-center gap-5"
-            >
-              <motion.a
-                href="tel:6037279377"
-                className="btn-luxury"
-                whileHover={{ scale: 1.03, y: -2 }}
-                whileTap={{ scale: 0.97 }}
-              >
-                <Phone size={18} />
-                Book Appointment
-              </motion.a>
-              <motion.div
-                whileHover={{ scale: 1.03, y: -2 }}
-                whileTap={{ scale: 0.97 }}
-              >
-                <Link href="/services" className="btn-outline-luxury">
-                  See Services
-                  <ArrowRight size={18} />
-                </Link>
-              </motion.div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 1.1 }}
-              className="mt-16 flex flex-wrap justify-center gap-10"
-            >
-              <div className="flex items-center gap-3">
-                <div className="flex gap-0.5">
-                  {[...Array(5)].map((_, i) => (
-                    <Star
-                      key={i}
-                      className="w-5 h-5 text-[#8FA68E] fill-[#8FA68E]"
-                    />
-                  ))}
-                </div>
-                <span className="font-body font-medium text-[#2C2C2C]">
-                  4.9 on Google
-                </span>
-              </div>
-              <div className="flex items-center gap-3">
-                <Heart className="w-5 h-5 text-[#8FA68E]" />
-                <span className="font-body font-medium text-[#2C2C2C]">
-                  Women-Owned
-                </span>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
+      {/* Hero Section with Aceternity Effects */}
+      <HeroAceternity />
 
       {/* Services Preview */}
       <section className="py-32 lg:py-40 bg-[#F7F5F0]">
